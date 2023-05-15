@@ -42,6 +42,22 @@ You can pass the same props to this as an `HTMLElement` and the same props as in
 
 Please check [`peek-a-header` docs](https://github.com/Oak-Digital/peek-a-header) for more information.
 
+#### `events` props
+
+You should use the `events` props to listen for events, it is just an event map.
+
+Example:
+
+```typescript
+<PeekAHeaderComponent events={{
+    progress: (progress) => {
+        // Do something with progress
+    },
+}}>
+    ...
+</PeekAHeaderComponent>
+```
+
 #### `tag` prop
 
 You may not always want to use a `<header>` element for the hiding header. maybe because it is already wrapped in a `<header>` tag.

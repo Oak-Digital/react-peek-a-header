@@ -1,7 +1,7 @@
 {
     "name": "@oak-digital/react-peek-a-header",
     "license": "MIT",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "type": "module",
     "files": [
         "dist"

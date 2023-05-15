@@ -2,7 +2,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import packageJson from './package.json';
-import dts from "vite-plugin-dts";
+import dts from 'vite-plugin-dts';
 
 const getPackageName = () => {
     return packageJson.name.split('/').pop() ?? packageJson.name;
@@ -42,5 +42,15 @@ export default defineConfig({
                     formats: ['umd', 'es'],
                     fileName: (format) => fileName[format],
                 },
+
+        rollupOptions: {
+            external: ['react', 'react-dom'],
+            output: {
+                globals: {
+                    react: 'React',
+                    'react-dom': 'reactdom',
+                },
+            },
+        },
     },
 });

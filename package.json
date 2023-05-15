@@ -1,18 +1,18 @@
 {
     "name": "@oak-digital/react-peek-a-header",
     "license": "MIT",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "type": "module",
     "files": [
         "dist"
     ],
-    "main": "./dist/cjs/main.cjs",
-    "module": "./dist/esm/main.mjs",
-    "types": "./dist/esm/main.d.ts",
+    "main": "./dist/main.cjs",
+    "module": "./dist/main.mjs",
+    "types": "./dist/main.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/main.cjs",
-            "require": "./dist/my-lib.mjs"
+            "import": "./dist/main.mjs",
+            "require": "./dist/main.cjs"
         }
     },
     "scripts": {

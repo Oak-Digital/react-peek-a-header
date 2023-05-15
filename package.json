@@ -45,8 +45,8 @@
         "vitest": "^0.28.5"
     },
     "dependencies": {
+        "@oak-digital/peek-a-header": "^0.0.4",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "@oak-digital/peek-a-header": "^0.0.3"
+        "react-dom": "^18.2.0"
     }
 }

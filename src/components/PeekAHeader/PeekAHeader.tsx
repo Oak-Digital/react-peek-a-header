@@ -1,24 +1,105 @@
-import { JSX, FC, createElement, HTMLAttributes, forwardRef, useEffect, useRef } from 'react';
-import { PeekAHeader as PeekAHeaderClass } from '@oak-digital/peek-a-header';
+import { JSX, createElement, HTMLAttributes, forwardRef, useEffect, useRef, useState } from 'react';
+import { PeekAHeader as PeekAHeaderClass, PeekAHeaderEventMap, PeekAHeaderOptions } from '@oak-digital/peek-a-header';
+import { usePeekAHeaderContext } from '../../lib';
 
 type Props = {
     tag?: keyof JSX.IntrinsicElements;
-} & HTMLAttributes<HTMLElement>
+    events?: Readonly<Partial<PeekAHeaderEventMap>>;
+    position?: 'sticky' | 'fixed';
+    locked?: Parameters<PeekAHeaderClass['lock']>[0];
+} & Readonly<PeekAHeaderOptions> &
+    Omit<HTMLAttributes<HTMLElement>, 'ref'>;
 
-const PeekAHeader = forwardRef<HTMLElement, Props>(({ tag = 'header', ...htmlProps }, ref) => {
-    const internalRef = useRef<HTMLElement>(null);
+const PeekAHeaderComponent = forwardRef<HTMLElement, Props>(
+    (
+        {
+            tag = 'header',
+            events = {},
+            position,
+            locked,
+            autoSnap,
+            autoUpdateTransform,
+            transitionStrategy,
+            autoAriaHidden,
+            ...htmlProps
+        },
+        ref
+    ) => {
+        const internalRef = useRef<HTMLElement | null>(null);
+        const [internalInstance, setInternalInstance] = useState<PeekAHeaderClass | undefined>();
+        const { instance = internalInstance, setInstance = setInternalInstance } = usePeekAHeaderContext();
 
-    useEffect(() => {
-        if (!internalRef.current) {
-            return;
-        }
+        const options: PeekAHeaderOptions = {
+            autoUpdateTransform,
+            transitionStrategy,
+            autoAriaHidden,
+            autoSnap,
+        };
 
-        const instance = new PeekAHeaderClass(internalRef.current);
-    });
+        useEffect(() => {
+            if (!internalRef.current) {
+                return;
+            }
 
-    return createElement(tag, {
-        ...htmlProps,
-    });
-});
+            const instance = new PeekAHeaderClass(internalRef.current, {
+                ...options,
+            });
+            setInstance(instance);
 
-export default PeekAHeader;
+            return () => {
+                instance.destroy();
+            };
+        }, []);
+
+        useEffect(() => {
+            if (!instance) return;
+
+            // FIXME: I am not sure how to do typescript properly with Object.keys
+
+            Object.keys(events).forEach((k) => {
+                const key = k as keyof typeof events;
+                const event = events[key]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+
+                instance.on(key, event);
+            });
+
+            return () => {
+                Object.keys(events).forEach((k) => {
+                    const key = k as keyof PeekAHeaderEventMap;
+                    const event = events[key]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+
+                    instance.off(key, event);
+                });
+            };
+        }, [instance, events]);
+
+        useEffect(() => {
+            if (!instance) return;
+
+            if (!locked) {
+                instance.unlock();
+                return;
+            }
+
+            instance.lock(locked);
+        }, [instance, locked]);
+
+        // useEffect(() => {
+        //     if (!instance) return;
+        // }, [instance, position]);
+
+        return createElement(tag, {
+            ...htmlProps,
+            ref: (el: HTMLElement) => {
+                internalRef.current = el;
+                if (typeof ref === 'function') {
+                    ref(el);
+                } else if (ref) {
+                    ref.current = el;
+                }
+            },
+        });
+    }
+);
+
+export default PeekAHeaderComponent;

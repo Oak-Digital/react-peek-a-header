@@ -6,13 +6,13 @@
     "files": [
         "dist"
     ],
-    "main": "./dist/main.cjs",
+    "main": "./dist/main.umd.cjs",
     "module": "./dist/main.mjs",
     "types": "./dist/main.d.ts",
     "exports": {
         ".": {
             "import": "./dist/main.mjs",
-            "require": "./dist/main.cjs"
+            "require": "./dist/main.umd.cjs"
         }
     },
     "scripts": {

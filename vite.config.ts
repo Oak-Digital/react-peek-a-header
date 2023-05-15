@@ -18,6 +18,7 @@ const getPackageNameCamelCase = () => {
 
 const fileName = {
     es: `main.mjs`,
+    umd: `main.umd.cjs`,
     cjs: `main.cjs`,
     iife: `main.iife.js`,
 };
@@ -38,7 +39,7 @@ export default defineConfig({
                 : {
                     entry: path.resolve(__dirname, 'src/main.ts'),
                     name: getPackageNameCamelCase(),
-                    formats: ['es', 'cjs', 'iife'],
+                    formats: ['umd', 'es'],
                     fileName: (format) => fileName[format],
                 },
     },

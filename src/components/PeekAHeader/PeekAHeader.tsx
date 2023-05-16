@@ -41,6 +41,7 @@ const PeekAHeaderComponent = forwardRef<HTMLElement, Props>(
             cacheStaticOffset: true,
         };
 
+        // TODO: find a good way to add transition strategy to dependency array
         useEffect(() => {
             if (!internalRef.current) {
                 return;
@@ -54,7 +55,7 @@ const PeekAHeaderComponent = forwardRef<HTMLElement, Props>(
             return () => {
                 instance.destroy();
             };
-        }, [autoUpdateTransform, transitionStrategy, autoAriaHidden, autoSnap, isTop, snapOnWheel]);
+        }, [autoUpdateTransform, autoAriaHidden, autoSnap, isTop, snapOnWheel]);
 
         useEffect(() => {
             if (!instance) return;

@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@oak-digital/peek-a-header': ^0.0.6
+  '@oak-digital/peek-a-header': ^0.1.1
   '@types/react': ^18.2.6
   '@typescript-eslint/eslint-plugin': ^5.59.5
   '@typescript-eslint/parser': ^5.59.5
@@ -22,7 +22,7 @@ specifiers:
   vitest: ^0.28.5
 
 dependencies:
-  '@oak-digital/peek-a-header': 0.0.6_typescript@4.9.5
+  '@oak-digital/peek-a-header': 0.1.1_typescript@4.9.5
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
@@ -639,8 +639,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@oak-digital/peek-a-header/0.0.6_typescript@4.9.5:
-    resolution: {integrity: sha512-JUhAcnboW/6u8Llf3m/6u/Hulm0huR6vUyNh6uC42LpdGwYs7UepgTSPp+0u2C1b8Vw/igD866PsitswApPVNw==}
+  /@oak-digital/peek-a-header/0.1.1_typescript@4.9.5:
+    resolution: {integrity: sha512-zOkznkd9j2vbAsFbd71BLiqF+qfrk/YaOOdfHuFxMNFOK9Ee7XzET9K/KOmqUr+PCQuaacVv3t8W7qg1cMic0A==}
     dependencies:
       tseep: 1.0.5_typescript@4.9.5
     transitivePeerDependencies:

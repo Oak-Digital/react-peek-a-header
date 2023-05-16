@@ -21,6 +21,8 @@ const PeekAHeaderComponent = forwardRef<HTMLElement, Props>(
             autoUpdateTransform,
             transitionStrategy,
             autoAriaHidden,
+            isTop,
+            snapOnWheel,
             ...htmlProps
         },
         ref
@@ -34,6 +36,9 @@ const PeekAHeaderComponent = forwardRef<HTMLElement, Props>(
             transitionStrategy,
             autoAriaHidden,
             autoSnap,
+            isTop,
+            snapOnWheel,
+            cacheStaticOffset: true,
         };
 
         useEffect(() => {
@@ -49,7 +54,7 @@ const PeekAHeaderComponent = forwardRef<HTMLElement, Props>(
             return () => {
                 instance.destroy();
             };
-        }, []);
+        }, [autoUpdateTransform, transitionStrategy, autoAriaHidden, autoSnap, isTop, snapOnWheel]);
 
         useEffect(() => {
             if (!instance) return;

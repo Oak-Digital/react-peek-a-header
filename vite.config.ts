@@ -23,14 +23,18 @@ const fileName = {
     iife: `main.iife.js`,
 };
 
+const dtsPlugins =
+    process.env.BUILD === 'demo'
+        ? []
+        : [
+            dts({
+                insertTypesEntry: true,
+            }),
+        ];
+
 export default defineConfig({
     /* root: 'demo', */
-    plugins: [
-        react(),
-        dts({
-            insertTypesEntry: true,
-        }),
-    ],
+    plugins: [react(), ...dtsPlugins],
     build: {
         outDir: process.env.BUILD === 'demo' ? 'demo-dist' : 'dist',
         lib:

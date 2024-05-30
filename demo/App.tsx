@@ -1,5 +1,6 @@
+import { TransitionClassStrategy } from '@oak-digital/peek-a-header';
 import React from 'react';
-import { PeekAHeaderComponent, TransitionClassStrategy, PeekAHeaderProvider, PeekAHeaderConsumer } from '../src/main';
+import { PeekAHeaderComponent, PeekAHeaderProvider, PeekAHeaderConsumer } from '../src/main';
 
 const App = () => {
     return (

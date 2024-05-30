@@ -8,12 +8,12 @@ It provides a hiding header which hides and shows as the user scrolls. It is con
 
 ### Installation
 
-Install with your package manager
+Install with your package manager, you also need the `@oak-digital/peek-a-header` dependency
 
 ```bash
-$ npm i @oak-digital/react-peek-a-header
-$ pnpm i @oak-digital/react-peek-a-header
-$ yarn add @oak-digital/react-peek-a-header
+$ npm i @oak-digital/react-peek-a-header @oak-digital/peek-a-header
+$ pnpm i @oak-digital/react-peek-a-header @oak-digital/peek-a-header
+$ yarn add @oak-digital/react-peek-a-header @oak-digital/peek-a-header
 ```
 
 ## Usage

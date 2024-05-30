@@ -23,8 +23,10 @@ const fileName = {
     iife: `main.iife.js`,
 };
 
+const isDemo = process.env.BUILD === 'demo';
+
 const dtsPlugins =
-    process.env.BUILD === 'demo'
+    isDemo
         ? []
         : [
             dts({
@@ -36,7 +38,7 @@ export default defineConfig({
     /* root: 'demo', */
     plugins: [react(), ...dtsPlugins],
     build: {
-        outDir: process.env.BUILD === 'demo' ? 'demo-dist' : 'dist',
+        outDir: isDemo ? 'demo-dist' : 'dist',
         lib:
             process.env.BUILD === 'demo'
                 ? undefined
@@ -48,7 +50,7 @@ export default defineConfig({
                 },
 
         rollupOptions: {
-            external: ['react', 'react-dom'],
+            external: isDemo ? [] : ['react', 'react-dom'],
             output: {
                 globals: {
                     react: 'React',

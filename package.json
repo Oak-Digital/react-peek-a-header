@@ -2,7 +2,7 @@
     "name": "@oak-digital/react-peek-a-header",
     "license": "MIT",
     "packageManager": "pnpm@9.15.5",
-    "version": "0.0.15",
+    "version": "0.1.0",
     "files": [
         "dist"
     ],

@@ -1,3 +1,5 @@
+'use client';
+
 import { PeekAHeader } from '@oak-digital/peek-a-header';
 import { PropsWithChildren, createContext, useContext, useState, ReactNode } from 'react';
 
@@ -37,7 +39,9 @@ export const PeekAHeaderProvider = ({ children }: PeekAHeaderProviderProps) => {
     };
 
     return (
-        <PeekAHeaderContext.Provider value={{ instance, setInstance, hide, partialHide, show }}>{children}</PeekAHeaderContext.Provider>
+        <PeekAHeaderContext.Provider value={{ instance, setInstance, hide, partialHide, show }}>
+            {children}
+        </PeekAHeaderContext.Provider>
     );
 };
 

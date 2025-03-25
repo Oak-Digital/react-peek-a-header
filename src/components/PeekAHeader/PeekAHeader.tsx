@@ -1,3 +1,5 @@
+'use client';
+
 import { JSX, createElement, HTMLAttributes, forwardRef, useEffect, useRef, useState } from 'react';
 import { PeekAHeader as PeekAHeaderClass, PeekAHeaderEventMap, PeekAHeaderOptions } from '@oak-digital/peek-a-header';
 import { usePeekAHeaderContext } from '../../lib';
